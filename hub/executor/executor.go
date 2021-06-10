@@ -24,6 +24,8 @@ import (
 	"github.com/Dreamacro/clash/tunnel"
 )
 
+// Allocation with new 内存清0，可以直接使用
+// 参考：https://golang.org/doc/effective_go#data
 var (
 	mux sync.Mutex
 )
@@ -163,6 +165,7 @@ func updateRules(rules []C.Rule) {
 	tunnel.UpdateRules(rules)
 }
 
+// 设置日志、mode: rule、接口、allowlan、ipv6，并创建代理端口
 func updateGeneral(general *config.General, force bool) {
 	log.SetLevel(general.LogLevel)
 	tunnel.SetMode(general.Mode)

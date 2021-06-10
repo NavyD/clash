@@ -98,6 +98,8 @@ func processUDP() {
 	}
 }
 
+// 创建至少4个goroutine并发处理udpQueue。对tcpQueue每个
+// conn都用一个goroutine处理
 func process() {
 	numUDPWorkers := 4
 	if runtime.NumCPU() > numUDPWorkers {
