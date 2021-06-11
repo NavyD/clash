@@ -51,6 +51,7 @@ func initMMDB() error {
 }
 
 // Init prepare necessary files
+// 如果`dir/config.yaml`不存在时，将会默认创建并仅包含一行配置`mixed-port: 7890`
 func Init(dir string) error {
 	// initial homedir
 	if _, err := os.Stat(dir); os.IsNotExist(err) {

@@ -20,6 +20,7 @@ var (
 	DisableIPv6 = true
 
 	// DefaultHosts aim to resolve hosts
+	// 在config.yaml中定义`hosts: -ip1 -ip2 ...`
 	DefaultHosts = trie.New()
 
 	// DefaultDNSTimeout defined the default dns request timeout

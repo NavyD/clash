@@ -117,6 +117,7 @@ func (p *Proxy) Alive() bool {
 }
 
 // Dial implements C.Proxy
+// 设置tcp连接超时5s
 func (p *Proxy) Dial(metadata *C.Metadata) (C.Conn, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), tcpTimeout)
 	defer cancel()

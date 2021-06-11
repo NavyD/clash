@@ -1,0 +1,128 @@
+#!MANAGED-CONFIG https://www.jinkela.site/link/xfTBMK0hw35XcYyy?clash=1
+
+#---------------------------------------------------#
+## 上次更新于：2021-06-09 02:13:02
+#---------------------------------------------------#
+
+port: 7890
+socks-port: 7891
+# redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: debug
+external-controller: 127.0.0.1:9090
+secret: ''
+dns:
+  enable: true
+  ipv6: false
+  listen: '0.0.0.0:5353'
+  # enhanced-mode: fake-ip
+  enhanced-mode: redir-host
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 119.29.29.29
+    - 'tcp://223.5.5.5'
+  fallback:
+    - 'tls://223.5.5.5:853'
+    - 'https://223.5.5.5/dns-query'
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+proxies:
+  -
+    name: 'IEPL专线 粤新03 | 4x NF'
+    type: vmess
+    server: iplc01.ddns168.com
+    port: 3041
+    uuid: e40184c9-eb15-35ab-ae7e-4ff6bedad2a8
+    alterId: 2
+    cipher: auto
+    udp: true
+  -
+    name: 'IEPL专线 粤日04 | 4x NF'
+    type: vmess
+    server: iplc01.ddns168.com
+    port: 3011
+    uuid: e40184c9-eb15-35ab-ae7e-4ff6bedad2a8
+    alterId: 2
+    cipher: auto
+    udp: true
+  -
+    name: 'IEPL专线 粤港03 | 4x NF'
+    type: vmess
+    server: iplc01.ddns168.com
+    port: 3021
+    uuid: e40184c9-eb15-35ab-ae7e-4ff6bedad2a8
+    alterId: 2
+    cipher: auto
+    udp: true
+  -
+    name: 'IEPL专线 粤美02 | 4x NF'
+    type: vmess
+    server: iplc01.ddns168.com
+    port: 3031
+    uuid: e40184c9-eb15-35ab-ae7e-4ff6bedad2a8
+    alterId: 2
+    cipher: auto
+    udp: true
+proxy-groups:
+  -
+    name: '🍃 JINKELA'
+    type: select
+    proxies:
+      - '⭐️ 自动选择'
+      - 'IEPL专线 粤新03 | 4x NF'
+      - 'IEPL专线 粤日04 | 4x NF'
+      - 'IEPL专线 粤港03 | 4x NF'
+      - 'IEPL专线 粤美02 | 4x NF'
+  -
+    name: '🍂 国内网络'
+    type: select
+    proxies:
+      - '🚀 绕过代理'
+      - '🍃 JINKELA'
+  -
+    name: '☁️ 其他流量'
+    type: select
+    proxies:
+      - '🍃 JINKELA'
+      - '🍂 国内网络'
+  -
+    name: '⭐️ 自动选择'
+    type: url-test
+    proxies:
+      - 'IEPL专线 粤新03 | 4x NF'
+      - 'IEPL专线 粤日04 | 4x NF'
+      - 'IEPL专线 粤港03 | 4x NF'
+      - 'IEPL专线 粤美02 | 4x NF'
+    url: 'http://www.gstatic.com/generate_204'
+    interval: '3600'
+  -
+    name: '🚀 绕过代理'
+    type: fallback
+    proxies:
+      - DIRECT
+    url: 'http://www.gstatic.com/generate_204'
+    interval: '259200'
+
+
+rules:
+# Local Area Network
+- DOMAIN-KEYWORD,announce,DIRECT
+- DOMAIN-KEYWORD,torrent,DIRECT
+- DOMAIN-KEYWORD,tracker,DIRECT
+- DOMAIN-SUFFIX,smtp,DIRECT
+- DOMAIN-SUFFIX,local,DIRECT
+- IP-CIDR,192.168.0.0/16,DIRECT
+- IP-CIDR,10.0.0.0/8,DIRECT
+- IP-CIDR,172.16.0.0/12,DIRECT
+- IP-CIDR,127.0.0.0/8,DIRECT
+- IP-CIDR,100.64.0.0/10,DIRECT
+
+- DOMAIN-KEYWORD,google,🍃 JINKELA
+
+# GeoIP China
+- GEOIP,CN,🍂 国内网络
+
+- MATCH,☁️ 其他流量

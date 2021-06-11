@@ -84,6 +84,7 @@ func main() {
 		return
 	}
 
+	// 命令行 参数配置
 	var options []hub.Option
 	if flagset["ext-ui"] {
 		options = append(options, hub.WithExternalUI(externalUI))
@@ -100,6 +101,7 @@ func main() {
 		log.Fatalln("Parse config error: %s", err.Error())
 	}
 
+	// 响应 键盘中断、终止信号
 	sigCh := make(chan os.Signal, 1)
 	signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
 	// 仅从channel中接收数据

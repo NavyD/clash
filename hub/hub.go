@@ -27,6 +27,9 @@ func WithSecret(secret string) Option {
 }
 
 // Parse call at the beginning of clash
+// 1. 解析配置文件，用命令行配置 覆盖相同的文件配置
+// 2. 启动restful服务
+// 3. 启动clash
 func Parse(options ...Option) error {
 	cfg, err := executor.Parse()
 	if err != nil {

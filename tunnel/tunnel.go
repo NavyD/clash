@@ -119,6 +119,9 @@ func needLookupIP(metadata *C.Metadata) bool {
 	return resolver.MappingEnabled() && metadata.Host == "" && metadata.DstIP != nil
 }
 
+// 1.解析字符串ip到net.IP
+// 2.解析host lookup ip -> host
+// 3. 如果是fakeip，查找的dstip将置为空，否则redir-host将从dns解析对应的host
 func preHandleMetadata(metadata *C.Metadata) error {
 	// handle IP string on host
 	if ip := net.ParseIP(metadata.Host); ip != nil {
@@ -151,6 +154,7 @@ func preHandleMetadata(metadata *C.Metadata) error {
 	return nil
 }
 
+// 根据mode配置（默认rule，可从配置文件中设置`mode: rule`）从metadata中匹配出Proxy接口实例与对应规则
 func resolveMetadata(ctx C.PlainContext, metadata *C.Metadata) (proxy C.Proxy, rule C.Rule, err error) {
 	switch mode {
 	case Direct:
@@ -251,6 +255,11 @@ func handleUDPConn(packet *inbound.PacketAdapter) {
 	}()
 }
 
+// 1.根据dns补全metadata ip,host
+// 2.查找metadata对应的代理proxy,rule
+// 3.通过metadata连接到Proxy得到远程连接remoteconn
+// 4.统计连接信息到restful服务
+// 5.根据当前被代理的连接conn类型处理Http或Socket
 func handleTCPConn(ctx C.ConnContext) {
 	defer ctx.Conn().Close()
 
@@ -306,6 +315,8 @@ func shouldResolveIP(rule C.Rule, metadata *C.Metadata) bool {
 	return rule.ShouldResolveIP() && metadata.Host != "" && metadata.DstIP == nil
 }
 
+// 1.解析host对应ip：在自定义hosts中查找host对应ip；在rule中查找可以解析的ip，当前只有两种rule支持：ipcidr,geoip
+// 2.从rules匹配metadata返回对应的Proxy
 func match(metadata *C.Metadata) (C.Proxy, C.Rule, error) {
 	configMux.RLock()
 	defer configMux.RUnlock()

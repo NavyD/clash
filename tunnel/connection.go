@@ -17,6 +17,8 @@ import (
 	"github.com/Dreamacro/clash/context"
 )
 
+// 将ctx中的连接请求转发到outbound，返回的resp转发到ctx作为响应，完成代理。
+// 转发时移除http proxy相关header作为正常请求。
 func handleHTTP(ctx *context.HTTPContext, outbound net.Conn) {
 	req := ctx.Request()
 	conn := ctx.Conn()
@@ -33,6 +35,7 @@ func handleHTTP(ctx *context.HTTPContext, outbound net.Conn) {
 		keepAlive := strings.TrimSpace(strings.ToLower(req.Header.Get("Proxy-Connection"))) == "keep-alive"
 
 		req.RequestURI = ""
+		// 移除非代理需要的headers 作为正常request
 		inbound.RemoveHopByHopHeaders(req.Header)
 		err := req.Write(outbound)
 		if err != nil {

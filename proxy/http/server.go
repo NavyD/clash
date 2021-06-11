@@ -76,11 +76,10 @@ func canActivate(loginStr string, authenticator auth.Authenticator, cache *cache
 // 处理http连接：用户认证、响应http connect方法并接收
 // http request到tunel channel中处理
 //
-// 如果request url.host为空时终止处理
+// 如果读取request失败 或 request.url.host为空时终止处理
 func HandleConn(conn net.Conn, cache *cache.Cache) {
 	br := bufio.NewReader(conn)
-	// label 类似c中的goto，可用于跳转  与变量名不冲突，但是存在同名变量时
-	// 不规范
+	// label 类似c中的goto，可用于跳转  与变量名不冲突，但是存在同名变量时不规范
 keepAlive:
 	request, err := http.ReadRequest(br)
 	if err != nil || request.URL.Host == "" {
