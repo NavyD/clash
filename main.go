@@ -27,6 +27,7 @@ var (
 	secret             string
 )
 
+// 先于main执行
 func init() {
 	flag.StringVar(&homeDir, "d", "", "set configuration directory")
 	flag.StringVar(&configFile, "f", "", "specify configuration file")
@@ -43,6 +44,7 @@ func init() {
 	})
 }
 
+// main不允许有参数与返回值
 func main() {
 	if version {
 		fmt.Printf("Clash %s %s %s with %s %s\n", C.Version, runtime.GOOS, runtime.GOARCH, runtime.Version(), C.BuildTime)
@@ -93,11 +95,13 @@ func main() {
 		options = append(options, hub.WithSecret(secret))
 	}
 
+	// 用配置启动clash
 	if err := hub.Parse(options...); err != nil {
 		log.Fatalln("Parse config error: %s", err.Error())
 	}
 
 	sigCh := make(chan os.Signal, 1)
 	signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
+	// 仅从channel中接收数据
 	<-sigCh
 }

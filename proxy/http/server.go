@@ -23,6 +23,9 @@ type HTTPListener struct {
 	cache   *cache.Cache
 }
 
+// 在指定addr上监听tcp并创建一个新的goroutine处理http数据 
+// 如果http.accept出现错误，只有当http.closed时会退出监听，否则
+// 忽略错误
 func NewHTTPProxy(addr string) (*HTTPListener, error) {
 	l, err := net.Listen("tcp", addr)
 	if err != nil {
@@ -70,9 +73,14 @@ func canActivate(loginStr string, authenticator auth.Authenticator, cache *cache
 	return
 }
 
+// 处理http连接：用户认证、响应http connect方法并接收
+// http request到tunel channel中处理
+//
+// 如果request url.host为空时终止处理
 func HandleConn(conn net.Conn, cache *cache.Cache) {
 	br := bufio.NewReader(conn)
-
+	// label 类似c中的goto，可用于跳转  与变量名不冲突，但是存在同名变量时
+	// 不规范
 keepAlive:
 	request, err := http.ReadRequest(br)
 	if err != nil || request.URL.Host == "" {
@@ -100,6 +108,7 @@ keepAlive:
 		}
 	}
 
+	// http connnect 回复建立代理
 	if request.Method == http.MethodConnect {
 		_, err := conn.Write([]byte("HTTP/1.1 200 Connection established\r\n\r\n"))
 		if err != nil {

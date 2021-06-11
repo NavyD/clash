@@ -59,6 +59,9 @@ func SetBindAddress(host string) {
 	bindAddress = host
 }
 
+// 在指定缓存端口上创建http代理
+// 
+// 如果之前在bindAddress上已创建过、port==0、则直接返回。
 func ReCreateHTTP(port int) error {
 	httpMux.Lock()
 	defer httpMux.Unlock()
@@ -66,9 +69,11 @@ func ReCreateHTTP(port int) error {
 	addr := genAddr(bindAddress, port, allowLan)
 
 	if httpListener != nil {
+		// 已在addr上创建了http代理
 		if httpListener.Address() == addr {
 			return nil
 		}
+		// 关闭
 		httpListener.Close()
 		httpListener = nil
 	}
@@ -312,6 +317,8 @@ func portIsZero(addr string) bool {
 	return false
 }
 
+// 返回监听地址与端口。allowLan=true时返回指定的host或未指定时返回`:port`。
+// 如当 bind-address=*时表示 在所有地址时访问
 func genAddr(host string, port int, allowLan bool) string {
 	if allowLan {
 		if host == "*" {
