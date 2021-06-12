@@ -1,0 +1,263 @@
+<mxfile>
+    <diagram id="NGMvuP1C8fOMMnkiAd7f" name="Page-1">
+        <mxGraphModel dx="1249" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="hub.executor.executor" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="120" width="120" height="610" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="2">
+                    <mxGeometry x="55" y="60" width="10" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="120" width="20" height="610" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="proxy.listener" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="120" width="100" height="610" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="4">
+                    <mxGeometry x="45" y="70" width="10" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="updateGeneral" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="5" parent="1" source="3">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="65" y="180" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="5" parent="1" target="3">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="65" y="256" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="ReCreateHTTP" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="8" parent="1" source="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="225" y="190" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="8" parent="1" target="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="225" y="266" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="proxy.http.server" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="120" width="100" height="610" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="11">
+                    <mxGeometry x="45" y="80" width="10" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="11">
+                    <mxGeometry x="50" y="110" width="10" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="go HandleConn" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="24" parent="11">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="55" y="90" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="80" y="90"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="NewHTTPProxy" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="17" parent="1" source="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="375" y="200" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="17" parent="1" target="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="375" y="276" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="tunnel.tunnel" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="120" width="100" height="650" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="30">
+                    <mxGeometry x="45" y="160" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="30">
+                    <mxGeometry x="45" y="40" width="10" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="30">
+                    <mxGeometry x="51" y="70" width="10" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="init go process" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="45" parent="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="56" y="50" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="81" y="50"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="30">
+                    <mxGeometry x="51" y="190" width="10" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="go handleTCPConn" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="48" parent="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="56" y="170" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="81" y="170"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="30">
+                    <mxGeometry x="56" y="220" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="preHandleMetadata" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="57" parent="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="61" y="200" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="86" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="59" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="30">
+                    <mxGeometry x="56" y="295" width="10" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="resolveMetadata" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="59" parent="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="61" y="275" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="86" y="275"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="30">
+                    <mxGeometry x="61" y="330" width="10" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="match" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" edge="1" target="61" parent="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="66" y="310" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="91" y="310"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="Add" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="31" parent="1" source="24">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="535" y="240" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="adapters.inbound.https" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="570" y="120" width="130" height="640" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="35">
+                    <mxGeometry x="60" y="120" width="10" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="NewHTTPS" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="39" parent="1" source="24">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="560" y="240" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="41" value="ConnContext" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="39" parent="1" target="24">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="560" y="316" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="42" value="解析req与conn ip创建metadata，与conn一起返回" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="190" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="31" parent="1" target="24">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="735" y="316" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="http认证处理与分离http/s请求" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="170" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="等待chan并发处理udp与tcp" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="870" y="130" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="component.resolver" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="970" y="120" width="110" height="650" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="50">
+                    <mxGeometry x="50" y="234" width="10" height="16" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="50">
+                    <mxGeometry x="50" y="340" width="10" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="FindHostByIP" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="51" parent="1" source="57">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="334" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="51" parent="1" target="57">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="410" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="解析host对应dstip到metadata。fakeip置为nil" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="980" y="300" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="ResolveIP" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="63" parent="1" source="61">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="460" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="65" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="63" parent="1" target="61">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="536" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="66" value="从rule组件中查找host可能存在的对应ip" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="955" y="400" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="constant.rule" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="1150" y="120" width="100" height="660" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="67">
+                    <mxGeometry x="45" y="380" width="10" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="Match" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="68" parent="1" source="61">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1125" y="510" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="70" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="68" parent="1" target="61">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1125" y="586" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="71" value="从rules中匹配metadata对应的rule，从而找到代理对应的adapter str" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1120" y="430" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="constant.adapters.Proxy" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="1290" y="120" width="130" height="760" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="72">
+                    <mxGeometry x="60" y="430" width="10" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="Dial" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="73" parent="1" source="48">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1295" y="550" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="75" value="Conn" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="73" parent="1" target="48">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1295" y="626" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="76" value="Proxy代理组件接口，可以实现不同的协议如http,vmess。dial将完成协议的准备工作返回一个可写的连接" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1285" y="465" width="165" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="tunnel.connection" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="1490" y="120" width="100" height="840" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="77">
+                    <mxGeometry x="45" y="480" width="10" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="handleHTTP" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="78" parent="1" source="48">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1465" y="600" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="80" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="78" parent="1" target="48">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1465" y="676" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="81" value="转发http req到代理，转发代理resp到原始http resp" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=5;verticalAlign=top;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1480" y="540" width="145" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
