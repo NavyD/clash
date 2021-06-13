@@ -9,6 +9,7 @@ import (
 )
 
 // NewSocket receive TCP inbound and return ConnContext
+// 封装metadata,conn。从socket dst addr中完善metadata.dst ip，从conn中获取src ip
 func NewSocket(target socks5.Addr, conn net.Conn, source C.Type) *context.ConnContext {
 	metadata := parseSocksAddr(target)
 	metadata.NetWork = C.TCP
